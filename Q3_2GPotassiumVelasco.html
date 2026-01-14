@@ -12,20 +12,17 @@
     <h1>CLUB APPLICATION~  𐔌՞. .՞𐦯</h1>
     <p>Answer the following questions</p>
     <div class="formHAHA">
-      
-      <fieldset>
-        <legend>Personal--</legend>
-        <form method="post" action="submit">
+      <form method="post" action="submit">
+        <fieldset>
+          <legend>Personal--</legend>
           <label>Student id: <input type="number" required></label><br/><br/>
           <label>Name: <input type="text" required></label><br/><br/>
           <label>Birthday: <input type="date" required></label><br/><br/>
           <label>Email address: <input type="email" required></label><br/>
-        </form>
-      </fieldset>
-      <br/><br/>
-      <fieldset>
-        <legend>Application--</legend>
-        <form method="post" action="submit">
+        </fieldset>
+        <br/><br/>
+        <fieldset>
+          <legend>Application--</legend>
           <label>Mobile Phone: <input type="text" requried></label><br/><br/>
           <label>Input/Extern:</label> <br/><br/>
             <input type="radio" required> Intern <br/><br/>
@@ -42,9 +39,15 @@
             Why do you want to join?<br/>
             <textarea rows="10" cols="60" placeholder = "Type your answer here" requried></textarea>
           </label>
-        </form>
-      </fieldset>
-      <input type="submit" value="Submit">
+        </fieldset>
+      </form>
+      <input type="submit">
     </div>
+
+    <script>
+      function submitBtn(){
+        alert("Pls confirm if you want to submit this application form");
+      }
+    </script>
   </body>
 </html>
