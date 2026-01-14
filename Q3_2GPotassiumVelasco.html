@@ -10,20 +10,20 @@
   </head>
   <body>
     <h1>CLUB APPLICATION~  𐔌՞. .՞𐦯</h1>
-    <p>Answer the following questions</p>
     <div class="formHAHA">
       <form method="post" action="submit" onsubmit="submitBtn()" onreset="resetBtn()">
+        <br/><br/>
         <fieldset>
           <legend>Personal--</legend>
-          <label>Student id: <input type="number" required></label><br/><br/>
-          <label onblur="blurBtn()">Name: <input type="text" required></label><br/><br/>
-          <label>Birthday: <input type="date" required></label><br/><br/>
-          <label>Email address: <input type="email" required></label><br/>
+          <label>Student id: <br/><input type="number" required></label><br/><br/>
+          <label>Name: <br/><input type="text" onblur="blurBtn(this)" required></label><br/><br/>
+          <label>Birthday: <br/><input type="date" required></label><br/><br/>
+          <label>Email address: <br/><input type="email" required></label><br/>
         </fieldset>
         <br/><br/>
         <fieldset>
           <legend>Application--</legend>
-          <label onblur="blurBtn()">Mobile Phone: <input type="text" required></label><br/><br/>
+          <label>Mobile Phone: <br/><input type="text" onblur="blurBtn(this)" required></label><br/><br/>
           <label>Input/Extern:</label> <br/><br/>
             <input type="radio" required> Intern <br/><br/>
             <input type="radio" required> Extern <br/><br/>
@@ -35,9 +35,9 @@
               <option>club4</option>
               <option>club5</option>
             </select><br/>
-          <label onblur="blurBtn()">
-            Why do you want to join?<br/>
-            <textarea rows="10" cols="60" placeholder = "Type your answer here" requried></textarea>
+          <label>
+            <br/><br/>Why do you want to join?<br/>
+            <textarea rows="10" cols="60" placeholder = "Type your answer here" onblur="blurBtn(this)" requried></textarea>
           </label>
         </fieldset>
         <input type="submit">
@@ -52,8 +52,13 @@
       function resetBtn(){
         confirm("Pls confirm if you want to reset the whole page");
       }
-      function blurBtn(){
-        document.getElementById()
+      function blurBtn(inputHEH){
+        if(inputHEH.value.trim()===""){
+            inputHEH.classList.add("change");
+        }
+        else {
+            inputHEH.classList.remove("change");
+        }
       }
     </script>
   </body>
