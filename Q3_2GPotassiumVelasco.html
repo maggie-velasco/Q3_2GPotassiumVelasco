@@ -6,28 +6,32 @@
 
     <title>VELASCO DESIGNING AN HTML FORM</title>
     <meta name="author" content="K28">
+    <link rel = "stylesheet" href = "Q3_2GPotassiumVelasco.css">
   </head>
   <body>
+    <h1>~~CLUB APPLICATION~~</h1>
+    <p>put here idk</p>
     <div class="formHAHA">
+      
       <fieldset>
         <legend>Personal--</legend>
         <form method="post" action="submit">
-          <label>Student id: <input type="number"></label><br/>
-          <label>Name: <input type="text"></label><br/>
-          <label>Birthday: <input type="date"></label><br/>
-          <label>Email address: <input type="email"></label><br/>
+          <label>Student id: <input type="number" required></label><br/><br/>
+          <label>Name: <input type="text" required></label><br/><br/>
+          <label>Birthday: <input type="date" required></label><br/><br/>
+          <label>Email address: <input type="email" required></label><br/><br/>
         </form>
       </fieldset>
 
       <fieldset>
         <legend>Application--</legend>
         <form method="post" action="submit">
-          <label>Mobile Phone: <input type="text"></label><br/>
-          <label>Input/Extern:</label> <br/>
-            <input type="radio"> Intern <br/>
-            <input type="radio"> Extern <br/>
-          <label>Preferred organization/club:></label>
-            <select>
+          <label>Mobile Phone: <input type="text" requried></label><br/><br/>
+          <label>Input/Extern:</label> <br/><br/>
+            <input type="radio" required> Intern <br/><br/>
+            <input type="radio" required> Extern <br/><br/>
+          <label>Preferred organization/club:</label>
+            <select required>
               <option>club1</option>
               <option>club2</option>
               <option>club3</option>
@@ -36,7 +40,7 @@
             </select><br/>
           <label>
             Why do you want to join?<br/>
-            <textarea rows="10" cols="25">Type your answer here</textarea>
+            <textarea rows="10" cols="60" placeholder = "Type your answer here" requried></textarea>
           </label>
         </form>
       </fieldset>
