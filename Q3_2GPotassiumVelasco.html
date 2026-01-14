@@ -12,7 +12,7 @@
     <h1>CLUB APPLICATION~  𐔌՞. .՞𐦯</h1>
     <p>Answer the following questions</p>
     <div class="formHAHA">
-      <form method="post" action="submit">
+      <form method="post" action="submit" onsubmit="submitBtn()" onreset="resetBtn()">
         <fieldset>
           <legend>Personal--</legend>
           <label>Student id: <input type="number" required></label><br/><br/>
@@ -23,7 +23,7 @@
         <br/><br/>
         <fieldset>
           <legend>Application--</legend>
-          <label>Mobile Phone: <input type="text" requried></label><br/><br/>
+          <label>Mobile Phone: <input type="text" required></label><br/><br/>
           <label>Input/Extern:</label> <br/><br/>
             <input type="radio" required> Intern <br/><br/>
             <input type="radio" required> Extern <br/><br/>
@@ -40,13 +40,17 @@
             <textarea rows="10" cols="60" placeholder = "Type your answer here" requried></textarea>
           </label>
         </fieldset>
+        <input type="submit">
+        <input type="reset">
       </form>
-      <input type="submit">
     </div>
 
     <script>
       function submitBtn(){
-        alert("Pls confirm if you want to submit this application form");
+        confirm("Pls confirm if you want to submit this application form");
+      }
+      function resetBtn(){
+        confirm("Pls confirm if you want to reset the whole page");
       }
     </script>
   </body>
