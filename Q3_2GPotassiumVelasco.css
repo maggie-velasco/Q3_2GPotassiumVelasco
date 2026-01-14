@@ -1,7 +1,26 @@
+* {
+  font-family: "Lucida Console", monospace;
+}
 h1{
   font-family:"Copperplate", fantasy;
   text-align:center;
 }
-* {
-  font-family: "Lucida Console", monospace;;
+p{
+    text-align:center;
+    font-size:10px;
+}
+.formHAHA{
+    margin-left:auto;
+    margin-right:auto;
+    background-color:rgb(176, 196, 228);
+    width:60%;
+    top:20%;
+    border-radius:10px;
+    opacity:0.7;
+}
+body{
+    background-image:url('https://images.pexels.com/photos/2310713/pexels-photo-2310713.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500');
+    background-repeat:no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
 }
