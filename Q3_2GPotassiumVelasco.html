@@ -47,12 +47,13 @@
 
     <script>
       function submitBtn(){
-        confirm("Pls confirm if you want to submit this application form");
+        confirm("Pls confirm if you want to submit this form");
       }
       function resetBtn(){
         confirm("Pls confirm if you want to reset the whole page");
       }
       function blurBtn(inputHEH){
+        event.preventDefault();
         if(inputHEH.value.trim()===""){
             inputHEH.classList.add("change");
         }
