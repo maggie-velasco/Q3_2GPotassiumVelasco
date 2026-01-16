@@ -1,10 +1,12 @@
 * {
   font-family: "Lucida Console", monospace;
+  font-size: 25px;
 }
 h1{
   font-family:"Pacifico", cursive;
   text-align:center;
   transition: transform 0.3s ease;
+  font-size: 35px;
 }
 h1:hover{
     color:rgb(74, 26, 94);
