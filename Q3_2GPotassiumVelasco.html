@@ -11,43 +11,81 @@
   <body>
     <h1>CLUB APPLICATION~  𐔌՞. .՞𐦯</h1>
     <div class="formHAHA">
-      <form method="post" action="submit" onsubmit="submitBtn()" onreset="resetBtn()">
+      <form method="post" onsubmit="return submitBtn()" onreset="resetBtn()">
         <br/><br/>
         <fieldset>
-          <legend><b>PERSONAL--</b></legend>
-          <label>Student id: <br/><input type="number" required></label><br/><br/>
-          <label>Name: <br/><input type="text" onblur="blurBtn(this)" required></label><br/><br/>
-          <label>Birthday: <br/><input type="date" required></label><br/><br/>
-          <label>Email address: <br/><input type="email" required></label><br/>
+          <legend>Personal--</legend>
+          <label>Student id: <br/><input type="number" id="sid" required></label><br/><br/>
+          <label>Name: <br/><input type="text" id="name" onblur="blurBtn(this)" required></label><br/><br/>
+          <label>Birthday: <br/><input type="date" id="bday" required></label><br/><br/>
+          <label>Email address: <br/><input type="email" id="ead" required></label><br/>
         </fieldset>
         <br/><br/>
         <fieldset>
-          <legend><b>APPLICATION--</b></legend>
-          <label>Mobile Phone: <br/><input type="text" onblur="blurBtn(this)" required></label><br/><br/>
-          <label>Input/Extern:</label> <br/><br/>
+          <legend>Application--</legend>
+          <label>Mobile Phone: <br/><input type="text" id="mobPhone" onblur="blurBtn(this)" required></label><br/><br/>
+          <label id="inextern">Input/Extern:</label> <br/><br/>
             <input type="radio" required> Intern <br/><br/>
             <input type="radio" required> Extern <br/><br/>
-          <label>Preferred organization/club:</label>
+          <label id="club">Preferred organization/club:</label>
             <select required>
-              <option>Swimming club</option>
-              <option>Badminton club</option>
-              <option>Football club</option>
-              <option>Chess club</option>
-              <option>Table tennis club</option>
+              <option>Acts</option>
+              <option>Alianti</option>
+              <option>Animo chess club</option>
+              <option>Astrosoc</option>
+              <option>Bake club</option>
+              <option>Computron</option>
+              <option>Exposure</option>
+              <option>Flux</option>
+              <option>Himig-agham</option>
+              <option>Labuyo/Laab</option>
+              <option>Likha</option>
+              <option>Math club</option>
+              <option>Sagala</option>
+              <option>Sigasig</option>
+              <option>Volant</option>
             </select><br/>
           <label>
-            <br/><br/>Why do you want to join this club?<br/>
-            <textarea rows="5%" cols="30%" placeholder = "Type your answer here" onblur="blurBtn(this)" requried></textarea>
+            <br/><br/><div id="reason">Why do you want to join this club?</div><br/>
+            <textarea rows="10%" cols="60%" placeholder = "Type your answer here" onblur="blurBtn(this)" requried></textarea>
           </label>
         </fieldset>
         <input type="submit">
         <input type="reset">
       </form>
+      <a href="viewSignUps.html"><button>View Sign-up page</button></a>
     </div>
 
     <script>
       function submitBtn(){
-        confirm("Pls confirm if you want to submit this form");
+        const confirmation = confirm("Pls confirm if you want to submit this form");
+
+        if(confirmation === true){
+          let savedStuff = JSON.parse(localStorage.getItem("savedStuff"));
+
+          if(!savedStuff){
+            savedStuff = [];
+          }
+
+          const inputs = {
+            sid: document.getElementById("sid").value,
+            name: document.getElementById("name").value,
+            bday: document.getElementById("bday").value,
+            ead: document.getElementById("ead").value,
+            mobPhone: document.getElementById("mobPhone").value,
+            inextern: document.getElementById("inextern").value,
+            club: document.getElementById("club").value,
+            reason: document.getElementById("reason").value 
+          }
+          savedStuff.push(inputs);
+          localStorage.setItem("savedStuff", JSON.stringify(savedStuff)); 
+
+          alert("Saved Successfully");
+          return false;
+        }
+        else {
+          return false;
+        }
       }
       function resetBtn(){
         confirm("Pls confirm if you want to reset the whole page");
@@ -61,6 +99,8 @@
             inputHEH.classList.remove("change");
         }
       }
+
+
     </script>
   </body>
 </html>
