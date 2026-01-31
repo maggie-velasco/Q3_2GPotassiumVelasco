@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset = "UTF-8">
+    <meta name="viewport" content="width=device-width", initial-scale="1">
+
+    <title>VIEW SIGNUP_VELASCO</title>
+    <meta name="author" content="K28">
+    <link rel = "stylesheet" href = "Q3_2GPotassiumVelasco.css">
+  </head>
+  <body>
+    <h1>List of Sign-up Students!!</h1>
+        <div class="signups">
+            <a href="Q3_2GPotassiumVelasco.html"><button>Go Back to Signups</button></a>
+            <label id="signedClub">Select a club!: </label>
+                <select required>
+                <option>Acts</option>
+                <option>Alianti</option>
+                <option>Animo chess club</option>
+                <option>Astrosoc</option>
+                <option>Bake club</option>
+                <option>Computron</option>
+                <option>Exposure</option>
+                <option>Flux</option>
+                <option>Himig-agham</option>
+                <option>Labuyo/Laab</option>
+                <option>Likha</option>
+                <option>Math club</option>
+                <option>Sagala</option>
+                <option>Sigasig</option>
+                <option>Volant</option>
+                </select><br/>
+            <label>
+            <p>Total no. of Signups: <span id="counter">0</span></p>
+            <!--Put table here-->
+
+            <table class="tableSignUps" border = "1">
+                <thead>
+                    <tr>
+                        <th>Club</th>
+                        <th>ID</th>
+                        <th>Full name</th>
+                        <th>Age</th>
+                        <th>Email</th>
+                        <th>Mobile</th>
+                        <th>Intern/Extern</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+
+        </div>
+    <script>
+        function counting(){
+            let savedStuff = JSON.parse(localStorage.getItem("savedStuff"));
+            
+            if(!savedStuff){
+                savedStuff = [];
+                document.getElementById("counter").textContent = 0;
+            }
+            else {
+                document.getElementById("counter").textContent = savedStuff.length;
+            }
+        }
+
+        function displaytable(){
+            let savedStuff = JSON.parse(localStorage.getItem("savedStuff"));
+
+            let table = document.querySelector(".tableSignUps");
+
+            for(let i = 0; i < savedStuff.length; i++){
+                let user = savedStuff[i];
+                let row = table.insertRow();
+
+                row.insertCell(0).textContent = user.club;
+                row.insertCell(1).textContent = user.sid;
+                row.insertCell(2).textContent = user.name;
+                row.insertCell(3).textContent = user.bday;
+                row.insertCell(4).textContent = user.email;
+                row.insertCell(5).textContent = user.mobPhone;
+                row.insertCell(6).textContent = user.inextern;
+            }
+        }
+        window.onload = counting;
+        window.onload = displaytable;
+    </script>
+  </body>
+</html>
