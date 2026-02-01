@@ -13,7 +13,7 @@
         <div class="signups">
             <a href="Q3_2GPotassiumVelasco.html"><button>Go Back to Signups</button></a>
             <label>Select a club!: </label>
-                <select id="signedClub" required>
+                <select id="signedClub" onchange="displaytable()" required>
                     <option>ALL</option>
                     <option>Acts</option>
                     <option>Alianti</option>
@@ -33,7 +33,6 @@
                 </select><br/>
             <label>
             <p>Total no. of Signups: <span id="counter">0</span></p>
-            <!--Put table here-->
 
             <table class="tableSignUps" border="1">
                 <thead>
@@ -44,15 +43,24 @@
                         <th>Age</th>
                         <th>Email</th>
                         <th>Mobile</th>
-                        <th>Intern/Extern</th>
                     </tr>
                 </thead>
                 <tbody>
 
                 </tbody>
             </table>
+
+            <p id="message"></p>
         </div>
     <script>
+        let savedStuff = JSON.parse(localStorage.getItem("savedStuff")) ||[];
+        if(!savedStuff || savedStuff.length === 0){
+            document.getElementById("message").textContent = "No sign ups for this club";
+        }
+        else {
+            displaytable(savedStuff);
+        }
+
         function counting(){
             let savedStuff = JSON.parse(localStorage.getItem("savedStuff"));
             
@@ -66,7 +74,6 @@
         }
 
         function displaytable(){
-            let savedStuff = JSON.parse(localStorage.getItem("savedStuff")) ||[];
             let signedClub = document.getElementById("signedClub").value;
             let table = document.querySelector(".tableSignUps");
             let finding = false;
@@ -74,20 +81,6 @@
             while (table.rows.length > 1) {
                 table.deleteRow(1);
             }
-
-            /*if(signedClub==="ALL"){
-                for(let i = 0; i < savedStuff.length;i++){
-                    let row = table.insertRow();
-                    row.insertCell(0).textContent = user.club;
-                    row.insertCell(1).textContent = user.sid;
-                    row.insertCell(2).textContent = user.name;
-                    row.insertCell(3).textContent = user.bday;
-                    row.insertCell(4).textContent = user.ead;
-                    row.insertCell(5).textContent = user.mobPhone;
-                    row.insertCell(6).textContent = user.inextern;
-                }
-                finding = true;
-            }*/
 
             for(let i = 0; i < savedStuff.length; i++){
                 let user = savedStuff[i];
@@ -100,17 +93,17 @@
                     row.insertCell(3).textContent = user.bday;
                     row.insertCell(4).textContent = user.ead;
                     row.insertCell(5).textContent = user.mobPhone;
-                    row.insertCell(6).textContent = user.inextern;
                     finding = true;
                 }
             }
             if(!finding){
-                table.deleteRow(savedStuff.length);
-                console.log("No sign ups matched with given club");
+                let row = table.insertRow();
+                let cell = row.insertCell(0);
+                cell.colSpan = 6;
+                cell.textContent = "No sign-ups for this club!!";
+                cell.style.textAlign = "center";
             }
         }
-
-        
 
         window.onload = function() {
             counting();
