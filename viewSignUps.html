@@ -12,29 +12,30 @@
     <h1>List of Sign-up Students!!</h1>
         <div class="signups">
             <a href="Q3_2GPotassiumVelasco.html"><button>Go Back to Signups</button></a>
-            <label id="signedClub">Select a club!: </label>
-                <select required>
-                <option>Acts</option>
-                <option>Alianti</option>
-                <option>Animo chess club</option>
-                <option>Astrosoc</option>
-                <option>Bake club</option>
-                <option>Computron</option>
-                <option>Exposure</option>
-                <option>Flux</option>
-                <option>Himig-agham</option>
-                <option>Labuyo/Laab</option>
-                <option>Likha</option>
-                <option>Math club</option>
-                <option>Sagala</option>
-                <option>Sigasig</option>
-                <option>Volant</option>
+            <label>Select a club!: </label>
+                <select id="signedClub" required>
+                    <option>ALL</option>
+                    <option>Acts</option>
+                    <option>Alianti</option>
+                    <option>Animo chess club</option>
+                    <option>Astrosoc</option>
+                    <option>Bake club</option>
+                    <option>Computron</option>
+                    <option>Exposure</option>
+                    <option>Flux</option>
+                    <option>Himig-agham</option>
+                    <option>Labuyo/Laab</option>
+                    <option>Likha</option>
+                    <option>Math club</option>
+                    <option>Sagala</option>
+                    <option>Sigasig</option>
+                    <option>Volant</option>
                 </select><br/>
             <label>
             <p>Total no. of Signups: <span id="counter">0</span></p>
             <!--Put table here-->
 
-            <table class="tableSignUps" border = "1">
+            <table class="tableSignUps" border="1">
                 <thead>
                     <tr>
                         <th>Club</th>
@@ -50,7 +51,6 @@
 
                 </tbody>
             </table>
-
         </div>
     <script>
         function counting(){
@@ -66,25 +66,56 @@
         }
 
         function displaytable(){
-            let savedStuff = JSON.parse(localStorage.getItem("savedStuff"));
-
+            let savedStuff = JSON.parse(localStorage.getItem("savedStuff")) ||[];
+            let signedClub = document.getElementById("signedClub").value;
             let table = document.querySelector(".tableSignUps");
+            let finding = false;
+
+            while (table.rows.length > 1) {
+                table.deleteRow(1);
+            }
+
+            /*if(signedClub==="ALL"){
+                for(let i = 0; i < savedStuff.length;i++){
+                    let row = table.insertRow();
+                    row.insertCell(0).textContent = user.club;
+                    row.insertCell(1).textContent = user.sid;
+                    row.insertCell(2).textContent = user.name;
+                    row.insertCell(3).textContent = user.bday;
+                    row.insertCell(4).textContent = user.ead;
+                    row.insertCell(5).textContent = user.mobPhone;
+                    row.insertCell(6).textContent = user.inextern;
+                }
+                finding = true;
+            }*/
 
             for(let i = 0; i < savedStuff.length; i++){
                 let user = savedStuff[i];
-                let row = table.insertRow();
 
-                row.insertCell(0).textContent = user.club;
-                row.insertCell(1).textContent = user.sid;
-                row.insertCell(2).textContent = user.name;
-                row.insertCell(3).textContent = user.bday;
-                row.insertCell(4).textContent = user.email;
-                row.insertCell(5).textContent = user.mobPhone;
-                row.insertCell(6).textContent = user.inextern;
+                if(user.club === signedClub || signedClub==="ALL"){
+                    let row = table.insertRow();
+                    row.insertCell(0).textContent = user.club;
+                    row.insertCell(1).textContent = user.sid;
+                    row.insertCell(2).textContent = user.name;
+                    row.insertCell(3).textContent = user.bday;
+                    row.insertCell(4).textContent = user.ead;
+                    row.insertCell(5).textContent = user.mobPhone;
+                    row.insertCell(6).textContent = user.inextern;
+                    finding = true;
+                }
+            }
+            if(!finding){
+                table.deleteRow(savedStuff.length);
+                console.log("No sign ups matched with given club");
             }
         }
-        window.onload = counting;
-        window.onload = displaytable;
+
+        
+
+        window.onload = function() {
+            counting();
+            displaytable();
+        }
     </script>
   </body>
 </html>
