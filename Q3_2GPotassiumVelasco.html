@@ -24,10 +24,10 @@
         <fieldset>
           <legend>Application--</legend>
           <label>Mobile Phone: <br/><input type="text" id="mobPhone" onblur="blurBtn(this)" required></label><br/><br/>
-          <label id="inextern">Input/Extern:</label> <br/><br/>
-            <input type="radio" required> Intern <br/><br/>
-            <input type="radio" required> Extern <br/><br/>
-          <label>Preferred organization/club:</label>
+          <label>Input/Extern:</label> <br/><br/>
+            <input type="radio" id="inextern" value="intern" required> Intern <br/><br/>
+            <input type="radio" id="inextern" value="extern" required> Extern <br/><br/>
+          <label>Preferred organization/club:</label><br/>
             <select id="club" required>
               <option>Acts</option>
               <option>Alianti</option>
@@ -46,8 +46,8 @@
               <option>Volant</option>
             </select><br/>
           <label>
-            <br/><br/><div id="reason">Why do you want to join this club?</div><br/>
-            <textarea rows="10%" cols="60%" placeholder = "Type your answer here" onblur="blurBtn(this)" requried></textarea>
+            <br/><br/><div>Why do you want to join this club?</div><br/>
+            <textarea rows="10%" cols="60%" id="reason" placeholder = "Type your answer here" onblur="blurBtn(this)" requried></textarea>
           </label>
         </fieldset>
         <input type="submit">
@@ -62,6 +62,7 @@
 
         if(confirmation === true){
           let savedStuff = JSON.parse(localStorage.getItem("savedStuff"));
+          //let inexternRadio = document.querySelector('input[name="inextern"]:checked');
 
           if(!savedStuff){
             savedStuff = [];
